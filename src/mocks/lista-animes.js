@@ -1,5 +1,6 @@
 const animes = [
     {
+        id: 1,
         nome: "Fullmetal Alchemist Brotherhood",
         ano: 2009,
         nota: 10,
@@ -9,6 +10,7 @@ const animes = [
         sinopse: "Edward Elric e seu irmão mais novo Alphonse Elric, são dois jovens alquimistas que buscam a pedra filosofal para restaurar seus corpos após uma desastrosa tentativa de trazer a mãe de volta à vida através da alquimia."
     },
     {
+        id: 2,
         nome: "Death Note",
         ano: 2006,
         nota: 9,
@@ -18,6 +20,7 @@ const animes = [
         sinopse: "Light Yagami é um estudante brilhante que, um dia, encontra um caderno sobrenatural chamado Death Note, que permite que o usuário mate qualquer pessoa apenas conhecendo seu nome e rosto."
     },
     {
+        id: 3,
         nome: "Naruto",
         ano: 2002,
         nota: 6,
@@ -27,6 +30,7 @@ const animes = [
         sinopse: "Naruto Uzumaki é um jovem ninja que tem em seu interior o espírito de uma raposa de nove caudas, Kurama, que foi selada em seu corpo por Minato Namikaze, o Quarto Hokage de Konoha, logo após seu nascimento."
     },
     {
+        id: 4,
         nome: "One Piece",
         ano: 1999,
         nota: 9,
@@ -37,4 +41,4 @@ const animes = [
       }
 ]
 
-module.exports = animes
+module.exports = animes;

@@ -3,3 +3,9 @@ const router = express.Router(); // sempre que quiser acessar a função de rota
 const animeController = require('./controllers/anime-controller');
 
 router.get('/animes', animeController.getAll);
+router.get('/animes/:id', animeController.getAnimeById);
+router.post('/animes', animeController.insertAnime);
+router.delete('/animes/:id', animeController.deleteAnime);
+router.put('/animes/:id', animeController.attAnime);
+
+module.exports = router;
