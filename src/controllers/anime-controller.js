@@ -1,45 +1,64 @@
-const listaAnimes = require("../mocks/lista-animes");
+const animesModel = require("../models/animesModel");
 
-function getAll(req, res) {
-  res.send(listaAnimes);
+async function getAllAnimes(req, res) {
+    const animes = await animesModel.getAllAnimesModel();
+
+    return res.send(animes);
 }
-function getAnimeById(req, res) {
-  const { id } = req.params;
-  const anime = listaAnimes.find((anime) => anime.id === Number(id));
 
-  res.send(anime);
+async function getAnimeById(req, res){
+    const { id } = req.params;
+    const anime = await animesModel.getAnimeByIdModel(id);
+
+    return res.send(anime);
 }
-function insertAnime(req, res) {
-  const {nome, ano, nota, genero, episodios, imagem, sinopse } = req.body;
 
-  const id = listaAnimes[listaAnimes.length - 1].id + 1;
+async function insertAnime(req,res){
+    const {
+        nome,
+        ano,
+        nota,
+        genero,
+        episodios,
+        imagem,
+        sinopse
+    } = req.body;
 
-  listaAnimes.push({ id, nome, ano, nota, genero, episodios, imagem, sinopse });
+    await animesModel.insertAnimeModel(
+        nome,
+        ano,
+        nota,
+        genero,
+        episodios,
+        imagem,
+        sinopse
+    );
 
-  res.status(201).send("Anime adcionado com sucesso."); //criado com sucesso
+    res.status(201).send("Anime inserido com sucesso");
 }
-function deleteAnime(req, res) {
-  const { id } = req.params;
 
-  const index = listaAnimes.findIndex((anime) => anime.id === Number(id));
 
-  listaAnimes.splice(index, 1);
+async function updateAnime(req, res){
+    const { id } = req.params;
+    const {episodios} = req.body;
 
-  res.send("Anime deletado com sucesso!");
+    await animesModel.updateAnimeModel(id, episodios)
+
+    return res.send("Episódios atualizados com sucesso");
 }
-function attAnime(req, res) {
-  const { id } = req.params;
-  const { episodios } = req.body;
 
-  const index = listaAnimes.findIndex((anime) => anime.id === Number(id));
+async function deleteAnime(req, res){
+    const { id } = req.params;
 
-  listaAnimes[index].episodios = episodios;
-  res.status(201).send("Anime atualizado com sucesso.");
+   await animesModel.getAnimeByIdModel(id);
+
+  return res.send("Anime deletado com sucesso");
 }
+
 module.exports = {
-  getAll,
-  getAnimeById,
-  insertAnime,
-  deleteAnime,
-  attAnime,
-};
+    getAllAnimes,
+    getAnimeById,
+    insertAnime,
+    updateAnime,
+    deleteAnime
+}
