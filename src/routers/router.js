@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const animeController = require("./controllers/anime-controller");
-const middlewareAnimes = require("./middlewares/anime-middleware");
+const animeController = require("../controllers/anime-controller");
+const middlewareAnimes = require("../middlewares/anime-middleware");
 
 router.get("/animes", animeController.getAllAnimes);
 router.get(
