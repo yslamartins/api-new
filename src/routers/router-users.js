@@ -8,5 +8,13 @@ router.post("/users",
      middlewareUsers.insertUserMiddleware, 
      usersController.createUser
 );
+router.get("/users/:id",
+     middlewareUsers.middlewareGetUserById, 
+     usersController.getUserById
+);
+router.delete("/users/:id",
+     usersController.deleteUser,
+     middlewareUsers.middlewareDeleteUser
+);
 
 module.exports = router;

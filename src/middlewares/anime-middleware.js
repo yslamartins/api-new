@@ -12,6 +12,7 @@ async function middlewareGetAnimeById(req, res, next) {
   next();
 }
 
+
 async function middlewareInsertAnime(req, res, next) {
   const { nome, ano, genero, imagem, sinopse } = req.body;
 
